@@ -12,10 +12,16 @@
     <parameter name="browserVersion" value="53.0"/>
     <parameter name="url" value="https://www.hotels.com/"/>
 
-    <test name="Hotels Home">
+    <test name="Hotels Home" parallel="none" >
         <classes>
-          <!--  <class name="TestHomePage"/>-->
-            <class name="TestPackages_Flights"/>
+            <class name="TestHomePage" />
+               <class name="TestPackages_Flights"/>
+                <class name="TestGiftCard"/>
+            <class name="TestGroupMeeting"/>
+
+            <class name="TestCreateAccount"/>
+            <class name="TestSignIn"/>
+
         </classes>
     </test>
 </suite>

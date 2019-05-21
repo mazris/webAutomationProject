@@ -1,19 +1,26 @@
 import base.CommonAPI;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestHomePage extends CommonAPI {
     HomePage homePage;
     @BeforeMethod
     public void init(){
         homePage= PageFactory.initElements(driver, HomePage.class);
+        driver.navigate().to("https://www.hotels.com/");
     }
+
 
     @Test(priority = 1)
     public void testDealsLink(){
-       homePage.clickMenuLink("Deals","https://www.hotels.com/hotel-deals/?intlid=HOME+%3A%3A+header_main_section");
+        homePage.clickMenuLink("Deals","https://www.hotels.com/hotel-deals/?intlid=HOME+%3A%3A+header_main_section");
 
     }
     @Test(priority = 2)
@@ -46,6 +53,7 @@ public class TestHomePage extends CommonAPI {
 
     @Test(priority = 7)
     public void testUSDButton(){
+
         homePage.clickButton("//*[@id='header-toggle-currency']");
 
     }
@@ -64,17 +72,52 @@ public class TestHomePage extends CommonAPI {
         homePage.clickButton("//*[@id='header-sign-in']");
     }
 
+
+
     @Test(priority = 11)
     public void testWhereTo(){
-        homePage.enterText("//*[@id='qf-0q-destination']","Bahamas");
-
-        homePage.enterText("//*[@id='qf-0q-localised-check-in']","05/20/19");
-        homePage.enterText("//*[@id='qf-0q-localised-check-out']","05/27/19");
-
-        homePage.selectroom("1 room, 1 adult");
-
-        homePage.clickButton("//*[@class='cta cta-strong']");
-        getScreenshot(driver);
+        homePage.whereToGo();
 
     }
+
+    //Choose one of the following to unlock Secret Prices and pay less on select properties.
+   @Test(priority = 12)
+    public void testEmail(){
+       //clickOnCss("//*[@id='ftr-newsletter']");
+     homePage.clickButton("//a[@id='ftr-newsletter']");
+
+   }
+   @Test(priority = 13)
+    public void testHotelsApp(){
+       homePage.clickButton("//*[@id='ftr-hcom-app']");
+   }
+
+
+  @Test(priority = 15)
+    public void testLasVegasImg(){
+
+     homePage.lasVegasImg();
+  }
+
+  @Test(priority = 16)
+    public void testSanDiegoImg(){
+     homePage.sanDiegoImg();
+  }
+
+  @Test(priority = 17)
+    public void testNYImg(){
+      homePage.nyImg();
+  }
+  @Test(priority = 19)
+    public void testSanFrancisco(){
+      homePage.sanFranciscoImg();
+  }
+  @Test(priority = 20)
+    public void testMoreDestinationButton(){
+      homePage.moreDestinationButton();
+  }
+
+
+
+
 }
